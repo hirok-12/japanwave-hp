@@ -8,19 +8,19 @@ const services = [
     icon: Brain,
     title: "AI顧問制度",
     description: "最新のAI技術を活用し、ビジネスの効率化と革新をサポートします。",
-    image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=800",
+    image: "/education.png",
   },
   {
     icon: Code,
     title: "WEB/AI開発",
     description: "高品質なウェブアプリケーションとAIソリューションを提供します。",
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&q=80&w=800",
+    image: "/engineer.png",
   },
   {
     icon: LineChart,
     title: "業務改善コンサルティング",
     description: "デジタル技術を活用した業務効率化のコンサルティングを行います。",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
+    image: "/consulting.png",
   },
 ];
 
@@ -55,32 +55,31 @@ export default function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.2 }}
               viewport={{ once: true }}
-              className="group relative overflow-hidden"
+              className="group bg-gray-900/50 rounded-lg overflow-hidden flex flex-col"
             >
-              {/* Card Background */}
-              <div className="absolute inset-0">
-                <div className="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors duration-500" />
+              {/* Image Container */}
+              <div className="relative h-80 overflow-hidden">
                 <img
                   src={service.image}
                   alt={service.title}
-                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                  className="w-full h-full object-contain transform group-hover:scale-110 transition-transform duration-700"
                 />
               </div>
 
-              {/* Content */}
-              <div className="relative p-8 min-h-[400px] flex flex-col">
-                <div className="mb-auto">
-                  <service.icon className="h-12 w-12 text-primary mb-6 transform group-hover:scale-110 transition-transform duration-500" />
-                  <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-primary transition-colors">
-                    {service.title}
-                  </h3>
-                  <p className="text-white/80 leading-relaxed">
-                    {service.description}
-                  </p>
-                </div>
-
+              {/* Content Container - Below Image */}
+              <div className="p-6 flex-grow flex flex-col">
+                <h3 className="text-2xl font-bold mb-4 text-white transition-colors">
+                  {service.title}
+                </h3>
+                <p className="text-white/80 leading-relaxed">
+                  {service.description}
+                </p>
+                
+                {/* Spacer to push the line to the bottom */}
+                <div className="flex-grow"></div>
+                
                 {/* Hover Effect Line */}
-                <div className="absolute bottom-0 left-0 w-full h-1">
+                <div className="h-1 w-full mt-6">
                   <div className="h-full bg-primary transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
                 </div>
               </div>

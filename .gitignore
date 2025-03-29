@@ -46,4 +46,14 @@ coverage/
 # その他
 *.bak
 *.tmp
-*.temp 
+*.temp
+
+# Next.js build output
+.next/
+
+# その他の一般的な除外項目
+node_modules/
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local 

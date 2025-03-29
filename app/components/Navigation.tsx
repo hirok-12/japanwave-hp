@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { AudioWaveformIcon as WaveformIcon, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 
 const navItems = [
   { href: "#about", label: "会社紹介" },
@@ -36,7 +37,13 @@ export default function Navigation() {
       <nav className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <a href="#" className="flex items-center space-x-2">
-            <WaveformIcon className="h-8 w-8 text-primary" />
+            <Image 
+              src="/logo.png" 
+              alt="JAPANWAVE Logo" 
+              width={32} 
+              height={32} 
+              className="text-primary" 
+            />
             <span className="font-bold text-xl">JAPANWAVE</span>
           </a>
 

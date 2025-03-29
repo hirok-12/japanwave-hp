@@ -1,30 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Sparkles, Lightbulb, Users, Target } from "lucide-react";
-
-const features = [
-  {
-    icon: Sparkles,
-    title: "革新的なソリューション",
-    description: "最新のテクノロジーを活用し、ビジネスに革新をもたらします。",
-  },
-  {
-    icon: Lightbulb,
-    title: "クリエイティブな発想",
-    description: "独創的なアイデアで、お客様のビジョンを実現します。",
-  },
-  {
-    icon: Users,
-    title: "信頼関係の構築",
-    description: "お客様との強い信頼関係を大切にし、共に成長を目指します。",
-  },
-  {
-    icon: Target,
-    title: "目標達成へのコミット",
-    description: "お客様の目標達成に向けて、確実な成果を提供します。",
-  },
-];
 
 export default function About() {
   return (
@@ -50,27 +26,6 @@ export default function About() {
             平素より格別のご愛顧を賜り、誠にありがとうございます。
           </p>
         </motion.div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
-          {features.map((feature, index) => (
-            <motion.div
-              key={feature.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="group p-8 rounded-2xl bg-white/5 hover:bg-white/10 transition-all duration-300"
-            >
-              <div className="flex items-start space-x-4">
-                <feature.icon className="h-8 w-8 text-primary shrink-0 group-hover:text-white transition-colors" />
-                <div>
-                  <h3 className="text-xl font-semibold mb-3 text-white">{feature.title}</h3>
-                  <p className="text-white/70 leading-relaxed">{feature.description}</p>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
