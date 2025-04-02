@@ -7,15 +7,8 @@ if (!process.env.RESEND_API_KEY) {
 }
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-// Content-Typeヘッダーを明示的に処理するための設定
-export const config = {
-  api: {
-    bodyParser: true,
-  },
-};
 
 export const dynamic = 'force-dynamic';
-
 export async function POST(req: Request) {
   try {
     if (!process.env.RESEND_API_KEY) {
