@@ -28,20 +28,50 @@ export async function POST(req: Request) {
       );
     }
     
-    const { name, email, message, company } = body;
+    const { name, email, message, company, contactPurpose, serviceInfo } = body;
     
     const resend = new Resend(process.env.RESEND_API_KEY);
+    
+    // 選択されたお問い合わせ目的に応じて内容を変更
+    let emailText = `
+名前: ${name}
+メール: ${email}
+会社: ${company || 'なし'}
+`;
+
+    // お問い合わせ目的の追加
+    emailText += `お問い合わせ目的: ${contactPurpose.isPitchService ? '自社商品やサービスを提案したい' : '仕事を依頼したい'}
+`;
+
+    // 自社商品やサービスを提案したい場合
+    if (contactPurpose.isPitchService && serviceInfo) {
+      emailText += `
+---- 商品・サービス情報 ----
+商品・サービス概要: ${serviceInfo.serviceDescription}
+導入価格(1年): ${serviceInfo.servicePrice}円
+費用の説明: ${serviceInfo.priceExplanation}
+導入効果(1年): ${serviceInfo.expectedEffect}円
+効果の根拠: ${serviceInfo.effectReason}
+`;
+
+      if (serviceInfo.additionalInfo) {
+        emailText += `追加情報: ${serviceInfo.additionalInfo}
+`;
+      }
+    }
+
+    // 仕事を依頼したい場合
+    if (contactPurpose.isJobRequest) {
+      emailText += `
+お問い合わせ内容: ${message}
+`;
+    }
     
     const { data, error } = await resend.emails.send({
       from: 'お問い合わせフォーム <onboarding@resend.dev>',
       to: ['hiroki12malu@gmail.com'], // 実際の送信先メールアドレスを設定
       subject: `${name}さんからのお問い合わせ`,
-      text: `
-名前: ${name}
-メール: ${email}
-会社: ${company || 'なし'}
-メッセージ: ${message}
-      `,
+      text: emailText,
     });
     
     console.log('Resendレスポンス:', data, error);
