@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 const newsItems = [
   {
     id: 1,
-    date: "2024年6月1日",
+    date: "2024年10月10日",
     title: "新サービス「AIコンサルティング」の提供開始について",
     content: "企業のAI導入を支援する新サービスを開始いたします。経験豊富なコンサルタントが、お客様のビジネスに最適なAIソリューションをご提案いたします。"
   },
